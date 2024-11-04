@@ -21,7 +21,7 @@ public class CalculatePrimes {
     }
     ArrayList<Integer> calculate (int from, int to) throws IllegalArgumentException {
         ArrayList<Integer> primes = new ArrayList<>();
-        if (from < 0 || to > 1000) {
+        if (from < 0 || to > 1000 || to < 0 || from > to) {
             throw new IllegalArgumentException("Hoppsan, fel intervall angivet!");
         }
         if (from < 2) {

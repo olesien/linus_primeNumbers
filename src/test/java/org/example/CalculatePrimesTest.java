@@ -26,6 +26,14 @@ class CalculatePrimesTest {
     }
 
     @Test
+    @DisplayName("Negative max is invalid")
+    void testThatNegativeMaxIsInvalid() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            calc.calculate(1, -1);
+        });
+    }
+
+    @Test
     @DisplayName("Minimum is zero")
     void testThatMinIsZero() {
         assertDoesNotThrow(() -> {
@@ -41,11 +49,29 @@ class CalculatePrimesTest {
         });
     }
 
+
+
     @Test
     @DisplayName("Over one thousand is invalid")
     void testThatOverOneThousandIsInvalid() {
         assertThrows(IllegalArgumentException.class, () -> {
             calc.calculate(0, 1001);
+        });
+    }
+
+    @Test
+    @DisplayName("Over one thousand min is invalid")
+    void testThatOverOneThousandMinIsInvalid() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            calc.calculate(1001, 1);
+        });
+    }
+
+    @Test
+    @DisplayName("Max must be higher or equal to min")
+    void testThatMaxHigherThanMin() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            calc.calculate(10, 9);
         });
     }
 
